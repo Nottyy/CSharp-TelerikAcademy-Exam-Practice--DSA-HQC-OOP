@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Jedi Meditation", "01. Jedi Meditation\01. Jedi Meditation.csproj", "{A4070B24-1833-4914-8936-318C7BA38058}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Jedi Meditation", "01. Jedi Meditation\01. Jedi Meditation.csproj", "{671A6F00-2F7F-4045-B63F-627D94056EF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A4070B24-1833-4914-8936-318C7BA38058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4070B24-1833-4914-8936-318C7BA38058}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4070B24-1833-4914-8936-318C7BA38058}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4070B24-1833-4914-8936-318C7BA38058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{671A6F00-2F7F-4045-B63F-627D94056EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{671A6F00-2F7F-4045-B63F-627D94056EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{671A6F00-2F7F-4045-B63F-627D94056EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{671A6F00-2F7F-4045-B63F-627D94056EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BAED0F93-9CB5-4727-98FE-81ED8B380898}
+		SolutionGuid = {B9A0AF98-E6F1-4A33-831E-C1D01EE03918}
 	EndGlobalSection
 EndGlobal
