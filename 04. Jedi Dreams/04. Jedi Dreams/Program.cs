@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace _04._Jedi_Dreams
 {
@@ -47,13 +48,17 @@ namespace _04._Jedi_Dreams
 
         public static void ParseMethod(string line, Method currentMethod)
         {
-            var newMethods = line.Split(new[] { '.', '(' }, StringSplitOptions.RemoveEmptyEntries); // check for uppercase
+            // int counter = line.Count(x => (x == '.'));
+            // var newMethods = line.Split(new[] { '.', '(' }, StringSplitOptions.RemoveEmptyEntries); // check for uppercase
 
-            if (newMethods.Length > 0)
+            var rx = new Regex(@"\.\w+\(>", RegexOptions.Compiled);
+            var matches = rx.Matches(line);
+
+            if (matches.Count > 0)
             {
-                foreach (var method in newMethods)
+                foreach (var match in matches)
                 {
-                    currentMethod.Methods.Add(method);
+                    currentMethod.Methods.Add(match.ToString());
                     currentMethod.NumberOfMethods++;
                 }
             }
