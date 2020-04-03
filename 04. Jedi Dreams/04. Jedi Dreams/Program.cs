@@ -1,100 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-namespace _04._Jedi_Dreams
+﻿namespace _04.Jedi_Dreams
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+
+    public class JediDreams
     {
-        public static SortedSet<string> allMethodsNames = new SortedSet<string>();
-        static void Main()
+        public const string MethodDeclarationPattern = @"static\s+.*\s+([a-zA-Z]*[A-Z][a-zA-Z]*)\s*\(";
+        public const string CallPattern = @"([a-zA-Z]*[A-Z][a-zA-Z]*)\s*\(";
+
+        public static void Main()
         {
-            int length = int.Parse(Console.ReadLine());
-            List<Method> allMethods = new List<Method>();
-            Method currentMethod = new Method();
+            var methods = GetMethodsFromInput();
+            PrintMethods(methods);
+        }
 
-            for (int i = 0; i < length; i++)
+        private static void PrintMethods(Stack<Method> methods)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var method in methods
+                .OrderByDescending(m => m.CalledMethods.Count)
+                .ThenBy(m => m.Name))
             {
-                var line = Console.ReadLine();
+                sb.Append($"{method.Name} -> ");
 
-                if (line.Contains("static"))
+                if (method.CalledMethods.Count == 0)
                 {
-                    var methodName = GetMethodName(line);
-                    if (!allMethodsNames.Contains(methodName))
-                    {
-                        allMethodsNames.Add(methodName);
-                        var newMethod = new Method(methodName);
-                        currentMethod = newMethod;
-                        allMethods.Add(newMethod);
-                    }
+                    sb.Append("None");
                 }
                 else
                 {
-                    ParseMethod(line, currentMethod);
+                    sb.Append($"{method.CalledMethods.Count} -> ");
+                    sb.Append(string.Join(", ", method.CalledMethods.OrderBy(call => call)));
                 }
 
-                //continue with extracting rest of methods
+                sb.Append(Environment.NewLine);
             }
 
-            // Printing
-            foreach (var item in allMethods)
-            {
-                Console.WriteLine("{0} -> {1} -> {2}", item.MethodName, item.NumberOfMethods, string.Join(", ", item.Methods));
-            }
+            Console.Write(sb);
         }
 
-        
-
-        public static void ParseMethod(string line, Method currentMethod)
+        private static Stack<Method> GetMethodsFromInput()
         {
-            // int counter = line.Count(x => (x == '.'));
-            // var newMethods = line.Split(new[] { '.', '(' }, StringSplitOptions.RemoveEmptyEntries); // check for uppercase
+            var methods = new Stack<Method>();
+            var numberOfLines = int.Parse(Console.ReadLine());
 
-            var rx = new Regex(@"\.\w+\(>", RegexOptions.Compiled);
-            var matches = rx.Matches(line);
-
-            if (matches.Count > 0)
+            for (int i = 0; i < numberOfLines; i++)
             {
-                foreach (var match in matches)
+                var line = Console.ReadLine();
+
+                var methodMatch = Regex.Match(line, MethodDeclarationPattern);
+                var callMatches = Regex.Matches(line, CallPattern);
+
+                if (methodMatch.Success)
                 {
-                    currentMethod.Methods.Add(match.ToString());
-                    currentMethod.NumberOfMethods++;
+                    methods.Push(new Method
+                    {
+                        Name = methodMatch.Groups[1].Value,
+                        CalledMethods = new Queue<string>()
+                    });
+                }
+                else
+                {
+                    foreach (Match match in callMatches)
+                    {
+                        methods.Peek().CalledMethods.Enqueue(match.Groups[1].Value);
+                    }
                 }
             }
+
+            return methods;
         }
 
         public class Method
         {
-            private string _methodName;
-            private int _numberOfMethods;
-            private SortedSet<string> _methods;
+            public string Name { get; set; }
 
-            public Method()
-            {
-
-            }
-
-            public Method(string methodName)
-            {
-                this.MethodName = methodName;
-                this.Methods = new SortedSet<string>();
-                this.NumberOfMethods = 0;
-            }
-
-
-            public string MethodName { get { return this._methodName; } set { this._methodName = value; } }
-            public int NumberOfMethods { get { return this._numberOfMethods; } set { this._numberOfMethods = value; } }
-            public SortedSet<string> Methods { get { return this._methods;  } set { this._methods = value; } }
-        }
-
-        private static string GetMethodName(string line)
-        {
-
-            var split = (line.Substring(0, line.IndexOf('('))).Split(null);
-            string methodName = split[split.Length - 1];
-
-            return methodName;
+            public Queue<string> CalledMethods { get; set; }
         }
     }
 }
