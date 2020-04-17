@@ -38,9 +38,18 @@
             attackPlayer.Health += attackPlayer.CardRepository.Cards.Sum(pl => pl.HealthPoints);
             enemyPlayer.Health += enemyPlayer.CardRepository.Cards.Sum(pl => pl.HealthPoints);
 
+            var attackPlayerDamagePoints = attackPlayer.CardRepository.Cards.Sum(x => x.DamagePoints);
+            var enemyPlayerDamagePoints = enemyPlayer.CardRepository.Cards.Sum(x => x.DamagePoints);
             while (true)
             {
-                if (attackPlayer.IsDead || enemyPlayer.IsDead)
+                enemyPlayer.TakeDamage(attackPlayerDamagePoints);
+                if (enemyPlayer.IsDead)
+                {
+                    break;
+                }
+
+                attackPlayer.TakeDamage(enemyPlayerDamagePoints);
+                if (attackPlayer.IsDead)
                 {
                     break;
                 }
