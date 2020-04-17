@@ -28,7 +28,6 @@
             n = int.Parse(line[0]);
             m = int.Parse(line[1]);
             field = new BigInteger[n, m];
-            var s = 4;
 
             // On the second line there will be the integer numbers Fx and Fy, separated by a single space.
             line = Console.ReadLine().Split(' ');
