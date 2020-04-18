@@ -27,7 +27,7 @@
             bool ifPlayerExcists = this.cards.Any(x => x.Name == card.Name);
             if (ifPlayerExcists)
             {
-                throw new ArgumentException("Card {0} already exists!", card.Name);
+                throw new ArgumentException(string.Format("Card {0} already exists!", card.Name));
             }
 
             this.cards.Add(card);

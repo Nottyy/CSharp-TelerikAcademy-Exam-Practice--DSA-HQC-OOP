@@ -8,6 +8,7 @@
     using PlayersAndMonsters.Core.Factories.Contracts;
     using PlayersAndMonsters.Models.BattleFields;
     using PlayersAndMonsters.Models.BattleFields.Contracts;
+    using PlayersAndMonsters.Models.Players.Contracts;
     using PlayersAndMonsters.Repositories;
     using PlayersAndMonsters.Repositories.Contracts;
 
@@ -88,6 +89,11 @@
             }
 
             return sb.ToString();
+        }
+
+        public void AddPlayer(IPlayer plType, string playerName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

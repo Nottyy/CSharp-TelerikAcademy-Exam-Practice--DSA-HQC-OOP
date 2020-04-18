@@ -12,7 +12,7 @@ namespace PlayersAndMonsters.Models.Players
 
         protected Player(ICardRepository cardRepository, string username, int health) : base()
         {
-            this.Username = userName;
+            this.Username = username;
             this.Health = health;
             this.CardRepository = cardRepository;
         }
@@ -50,7 +50,7 @@ namespace PlayersAndMonsters.Models.Players
                     throw new ArgumentException("Player's health bonus cannot be less than zero.");
                 }
 
-                this.health -= value;
+                this.health = value;
             } 
         }
 

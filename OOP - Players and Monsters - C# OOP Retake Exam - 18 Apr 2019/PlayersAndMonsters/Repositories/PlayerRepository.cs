@@ -40,7 +40,7 @@
             bool ifPlayerExcists = this.players.Any(x => x.Username == player.Username);
             if (ifPlayerExcists)
             {
-                throw new ArgumentException("Player {0} already exists!", player.Username);
+                throw new ArgumentException(string.Format("Player {0} already exists!", player.Username));
             }
 
             this.players.Add(player);

@@ -1,4 +1,6 @@
-﻿namespace PlayersAndMonsters.Core.Contracts
+﻿using PlayersAndMonsters.Models.Players.Contracts;
+
+namespace PlayersAndMonsters.Core.Contracts
 {
     public interface IManagerController
     {
@@ -11,5 +13,6 @@
         string Fight(string attackUser, string enemyUser);
 
         string Report();
+        void AddPlayer(IPlayer plType, string playerName);
     }
 }

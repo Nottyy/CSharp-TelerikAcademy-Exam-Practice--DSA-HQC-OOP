@@ -19,11 +19,12 @@
     {
         public static void Main()
         {
-            //var card1 = new MagicCard("gogata");
-            //var card2 = new TrapCard("milenkata");
-            //var st = new List<ICard> { card1, card2 };
-            //var pl1 = new Beginner(, "ispata");
-
+            IReader reader = new Reader();
+            IWriter writer = new Writer();
+            IManagerController manageController = new ManagerController();
+            ICommmandExecuter commandExecuter = new CommandExecuter(manageController);
+            IEngine engine = new Engine(reader, writer, manageController, commandExecuter);
+            engine.Run();
         }
     }
 }
