@@ -1,0 +1,2 @@
+Design patterns used: 
+- Template
