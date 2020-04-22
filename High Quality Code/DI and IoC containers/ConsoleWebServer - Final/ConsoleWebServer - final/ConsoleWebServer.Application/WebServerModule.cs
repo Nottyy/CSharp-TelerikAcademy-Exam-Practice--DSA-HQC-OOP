@@ -17,6 +17,7 @@ using System.Reflection;
 
 namespace ConsoleWebServer.Application
 {
+    // temaplte, decorator design patterns used
     public class WebServerModule : NinjectModule
     {
         private const string HeadHandlerName = "HeadHandler";
