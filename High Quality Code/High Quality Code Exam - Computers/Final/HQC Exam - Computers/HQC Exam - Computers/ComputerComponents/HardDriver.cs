@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HQC_Exam___Computers.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace HQC_Exam___Computers
 {
-    class HardDriver
+    public class HardDriver
     {
         bool isInRaid;
         int capacity;
