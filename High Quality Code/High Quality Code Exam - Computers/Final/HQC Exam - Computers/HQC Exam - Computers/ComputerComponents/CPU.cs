@@ -1,85 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HQC_Exam___Computers
+﻿namespace HQC_Exam___Computers
 {
-    public class Cpu
+    using HQC_Exam___Computers.Common;
+    using HQC_Exam___Computers.ComputerComponents.Contracts;
+    using HQC_Exam___Computers.Contracts;
+    using System;
+    public abstract class CPU : ICpu
     {
-        private readonly byte numberOfBits;
-        private readonly Ram ram;
-        private readonly HardDriver videoCard;
-        static readonly Random Random = new Random();
+        private const string LowNumberMessage = "Number too low.";
+        private const string HighNumberMessage = "Number too high.";
+        private const string SquareMessage = "Square of {0} is {1}.";
+        private IMotherboard motherBoard;
 
-        internal Cpu(byte numberOfCores, byte numberOfBits, Ram ram, HardDriver videoCard)
+        public CPU(byte numberOfCores, IMotherboard motherBoard)
         {
-            this.numberOfBits = numberOfBits;
-            this.ram = ram;
+            this.motherBoard = motherBoard;
             this.NumberOfCores = numberOfCores;
-            this.videoCard = videoCard;
         }
 
-        byte NumberOfCores { get; set; }
-
-        public void SquareNumber()
-        {
-            if (this.numberOfBits == 32) SquareNumber32();
-            if (this.numberOfBits == 64) SquareNumber64();
-        }
-
-        void SquareNumber32()
-        {
-            var data = this.ram.LoadValue();
-            if (data < 0)
-            {
-                this.videoCard.Draw("Number too low.");
-            }
-            else if (data > 500)
-            {
-                this.videoCard.Draw("Number too high.");
-            }
-            else
-            {
-                int value = 0;
-                for (int i = 0; i < data; i++)
-                {
-                    value += data;
-                }
-                this.videoCard.Draw(string.Format("Square of {0} is {1}.", data, value));
-            }
-        }
-
-        void SquareNumber64()
-        {
-            var data = this.ram.LoadValue();
-            if (data < 0)
-            {
-                this.videoCard.Draw("Number too low.");
-            }
-            else if (data > 1000)
-            {
-                this.videoCard.Draw("Number too high.");
-            }
-            else
-            {
-                int value = 0;
-                for (int i = 0; i < data; i++)
-                {
-                    value += data;
-                }
-                this.videoCard.Draw(string.Format("Square of {0} is {1}.", data, value));
-            }
-        }
+        public byte NumberOfCores { get; private set; }
+        
 
         public void GenerateRandomNumberAndSaveToRam(int a, int b)
         {
-            int randomNumber;
-            do
-            {
-                randomNumber = Random.Next(0, 1000);
-            }
-            while (!(randomNumber >= a && randomNumber <= b));
-            this.ram.SaveValue(randomNumber);
+            int randomNumber = GlobalComputerHelpers.GenerateRandomNumber(a, b);
+            this.motherBoard.SaveRamValue(randomNumber);
         }
+
+        public void CalculateSquare()
+        {
+            var squareNum = this.motherBoard.LoadRamValue();
+            if (squareNum < 0)
+            {
+                this.motherBoard.DrawOnVideoCard(LowNumberMessage);
+            }
+            else if (squareNum >= this.GetMaxNumber())
+            {
+                this.motherBoard.DrawOnVideoCard(HighNumberMessage);
+            }
+            else
+            {
+                var square = squareNum * squareNum;
+                this.motherBoard.DrawOnVideoCard(string.Format(SquareMessage, squareNum, square));
+            }
+        }
+
+        protected abstract int GetMaxNumber();
     }
 }

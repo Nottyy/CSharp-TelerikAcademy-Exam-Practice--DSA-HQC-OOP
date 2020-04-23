@@ -1,8 +1,4 @@
 ﻿using HQC_Exam___Computers.ComputerComponents.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace HQC_Exam___Computers
 {
     public class Ram : IRam

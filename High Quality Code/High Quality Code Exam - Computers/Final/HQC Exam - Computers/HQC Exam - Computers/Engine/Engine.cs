@@ -21,12 +21,12 @@ namespace HQC_Exam___Computers
             {
                 var ram = new Ram(Eight / 4);
                 var videoCard = new HardDriver() { IsMonochrome = false };
-                pc = new Computer(ComputerType.PC, new Cpu(Eight / 4, 32, ram, videoCard), ram, new[] { new HardDriver(500, false, 0) }, videoCard, null);
+                pc = new Computer(ComputerType.PC, new CPU(Eight / 4, 32, ram, videoCard), ram, new[] { new HardDriver(500, false, 0) }, videoCard, null);
 
                 var serverRam = new Ram(Eight * 4);
                 var serverVideo = new HardDriver();
                 server = new Computer(ComputerType.SERVER,
-                    new Cpu(Eight / 2, 32, serverRam, serverVideo), serverRam,
+                    new CPU(Eight / 2, 32, serverRam, serverVideo), serverRam,
                     new List<HardDriver>{
                             new HardDriver(0, true, 2, new List<HardDriver> { new HardDriver(1000, false, 0), new HardDriver(1000, false, 0) })
                         }, serverVideo, null);
@@ -40,7 +40,7 @@ namespace HQC_Exam___Computers
 
                     laptop = new Computer(
                         ComputerType.LAPTOP,
-                        new Cpu(Eight / 4, 64, ram1, card),
+                        new CPU(Eight / 4, 64, ram1, card),
                         ram1,
                         new[]
                             {
@@ -54,16 +54,16 @@ namespace HQC_Exam___Computers
             else if (manufacturer == "Dell")
             {
                 var ram = new Ram(Eight); var videoCard = new HardDriver() { IsMonochrome = false };
-                pc = new Computer(ComputerType.PC, new Cpu(Eight / 2, 64, ram, videoCard), ram, new[] { new HardDriver(1000, false, 0) }, videoCard, null);
+                pc = new Computer(ComputerType.PC, new CPU(Eight / 2, 64, ram, videoCard), ram, new[] { new HardDriver(1000, false, 0) }, videoCard, null);
                 var ram1 = new Ram(Eight * Eight);
                 var card = new HardDriver(); server = new Computer(ComputerType.SERVER,
-                     new Cpu(Eight, 64, ram1, card),
+                     new CPU(Eight, 64, ram1, card),
                      ram1,
                      new List<HardDriver>{
                             new HardDriver(0, true, 2, new List<HardDriver> { new HardDriver(2000, false, 0), new HardDriver(2000, false, 0) })
                          }, card, null); var ram2 = new Ram(Eight); var videoCard1 = new HardDriver() { IsMonochrome = false };
                 laptop = new Computer(ComputerType.LAPTOP,
-                    new Cpu(Eight / 2, ((32)), ram2, videoCard1),
+                    new CPU(Eight / 2, ((32)), ram2, videoCard1),
                     ram2,
                     new[] { new HardDriver(1000, false, 0) },
                     videoCard1,

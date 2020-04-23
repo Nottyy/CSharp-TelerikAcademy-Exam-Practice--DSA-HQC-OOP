@@ -9,7 +9,7 @@ namespace HQC_Exam___Computers
 
         readonly LaptopBattery battery;
 
-        internal Computer(ComputerType type, Cpu cpu, Ram ram, IEnumerable<HardDriver> hardDrives,
+        internal Computer(ComputerType type, CPU cpu, Ram ram, IEnumerable<HardDriver> hardDrives,
             HardDriver videoCard, LaptopBattery battery)
         {
             Cpu = cpu;
@@ -26,7 +26,7 @@ namespace HQC_Exam___Computers
 
         IEnumerable<HardDriver> HardDrives { get; set; }
         HardDriver VideoCard { get; set; }
-        Cpu Cpu { get; set; }
+        CPU Cpu { get; set; }
         Ram Ram { get; set; }
 
         public void ChargeBattery(int percentage)

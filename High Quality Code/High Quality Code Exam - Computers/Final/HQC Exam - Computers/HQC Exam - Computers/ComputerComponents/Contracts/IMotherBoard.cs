@@ -4,9 +4,10 @@ using System.Text;
 
 namespace HQC_Exam___Computers.Contracts
 {
-    interface IMotherboard { 
+    public interface IMotherboard 
+    { 
         int LoadRamValue(); 
         void SaveRamValue(int value); 
-        void DrawOnVideoCard(string data); 
+        void DrawOnVideoCard(string data);
     }
 }

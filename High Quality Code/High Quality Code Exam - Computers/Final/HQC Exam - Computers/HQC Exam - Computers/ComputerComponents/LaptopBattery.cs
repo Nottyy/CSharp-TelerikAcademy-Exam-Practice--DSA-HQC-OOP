@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HQC_Exam___Computers
+﻿namespace HQC_Exam___Computers
 {
-    class LaptopBattery
+    using HQC_Exam___Computers.ComputerComponents;
+    public class LaptopBattery : Battery
     {
-        internal int Percentage { get; set; }
-        internal void Charge(int p)
+        private const int LaptopBatteryInitialChargePercentage = 50;
+        protected override int BatteryDefaultCharge()
         {
-            Percentage += p;
-            if (Percentage > 100) Percentage = 100;
-            if (Percentage < 0) Percentage = 0;
+            return LaptopBatteryInitialChargePercentage;
         }
-        internal LaptopBattery() { this.Percentage = 100 / 2; }
     }
 }
