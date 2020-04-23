@@ -1,4 +1,8 @@
-﻿namespace Computers3
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace HQC_Exam___Computers
 {
     class LaptopBattery
     {

@@ -1,19 +1,18 @@
-﻿
-using Computers1;using Computers11;using System;
-using Computers8;namespace Computers4
-{
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-    class Cpu
+namespace HQC_Exam___Computers
+{
+    public class Cpu
     {
         private readonly byte numberOfBits;
-
         private readonly Rammstein ram;
-
         private readonly HardDriver videoCard;
-
         static readonly Random Random = new Random();
 
-        internal Cpu(byte numberOfCores, byte numberOfBits, Rammstein ram, HardDriver videoCard) {
+        internal Cpu(byte numberOfCores, byte numberOfBits, Rammstein ram, HardDriver videoCard)
+        {
             this.numberOfBits = numberOfBits;
             this.ram = ram;
             this.NumberOfCores = numberOfCores;
@@ -80,15 +79,6 @@ using Computers8;namespace Computers4
             }
             while (!(randomNumber >= a && randomNumber <= b));
             this.ram.SaveValue(randomNumber);
-        }
-    }
-
-    class Laptop
-    {
-        private static void Main()
-        {
-            Computers computers = new Computers();
-            Computers.main();
         }
     }
 }
