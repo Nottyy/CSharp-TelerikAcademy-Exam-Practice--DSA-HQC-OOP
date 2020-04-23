@@ -18,7 +18,7 @@ namespace Computers8
                 var ram = new Rammstein(Eight / 4);
                 var videoCard = new HardDriver() { IsMonochrome = false };
                 pc = new Computer(Computers.Type.PC, new Cpu(Eight / 4, 32, ram, videoCard), ram, new[] { new HardDriver(500, false, 0) }, videoCard, null);
-
+                var c = 5;
                 var serverRam = new Rammstein(Eight * 4);
                 var serverVideo = new HardDriver();
                 server = new Computer(
