@@ -4,7 +4,7 @@
 
     public class CPU64 : BaseCPU
     {
-        public CPU64(byte numberOfCores, IMotherboard motherboard) : base(numberOfCores, motherboard)
+        public CPU64(byte numberOfCores) : base(numberOfCores)
         {
 
         }

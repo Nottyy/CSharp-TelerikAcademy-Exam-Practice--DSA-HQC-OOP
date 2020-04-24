@@ -4,7 +4,7 @@
 
     public class CPU128 : BaseCPU
     {
-        public CPU128(byte numberOfCores, IMotherboard motherboard) : base(numberOfCores, motherboard)
+        public CPU128(byte numberOfCores) : base(numberOfCores)
         {
         }
         protected override int GetMaxNumber()
