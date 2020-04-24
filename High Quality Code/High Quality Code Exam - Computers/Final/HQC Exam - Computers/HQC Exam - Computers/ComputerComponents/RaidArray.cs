@@ -11,7 +11,7 @@
 
         private IEnumerable<IHardDrive> raidArray;
 
-        public int Capacity => this.raidArray.Count() > 0 ? this.raidArray.FirstOrDefault().Capacity : 0;
+        public int Capacity => this.raidArray.Any() != false ? this.raidArray.FirstOrDefault().Capacity : 0;
 
         public RaidArray()
         {
@@ -32,7 +32,7 @@
         }
         public string LoadData(int address)
         {
-            if (this.raidArray.Count() == 0)
+            if (this.raidArray.Any() == false)
             {
                 throw new OutOfMemoryException(NoHardDisksMessage);
             }

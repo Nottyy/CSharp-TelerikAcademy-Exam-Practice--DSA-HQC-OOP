@@ -2,7 +2,7 @@
 {
     using HQC_Exam___Computers.Contracts;
 
-    public class CPU128 : CPU
+    public class CPU128 : BaseCPU
     {
         public CPU128(byte numberOfCores, IMotherboard motherboard) : base(numberOfCores, motherboard)
         {

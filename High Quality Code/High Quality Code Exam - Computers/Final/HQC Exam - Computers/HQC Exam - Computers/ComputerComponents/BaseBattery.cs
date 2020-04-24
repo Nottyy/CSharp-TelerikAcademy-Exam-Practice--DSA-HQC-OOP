@@ -2,7 +2,7 @@
 {
     using HQC_Exam___Computers.ComputerComponents.Contracts;
 
-    public abstract class Battery : IBattery
+    public abstract class BaseBattery : IBattery
     {
         private int percentage;
         public int Percentage
@@ -25,7 +25,7 @@
             }
         }
 
-        public Battery()
+        public BaseBattery()
         {
             this.Percentage = BatteryDefaultCharge();
         }

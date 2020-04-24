@@ -9,7 +9,6 @@ namespace HQC_Exam___Computers.ComputerComponents
     {
         private const ConsoleColor MonochromeConsoleColor = ConsoleColor.Gray;
 
-
         public void Draw(string msg)
         {
             Console.BackgroundColor = MonochromeConsoleColor;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HQC_Exam___Computers.ComputerComponents.Contracts
 {
-    interface ICpu
+    public interface ICpu
     {
         byte NumberOfCores { get; }
         void GenerateRandomNumberAndSaveToRam(int min, int max);

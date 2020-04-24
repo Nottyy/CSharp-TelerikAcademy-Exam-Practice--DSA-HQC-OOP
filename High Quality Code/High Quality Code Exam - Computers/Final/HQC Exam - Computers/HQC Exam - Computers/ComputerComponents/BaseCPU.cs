@@ -4,14 +4,14 @@
     using HQC_Exam___Computers.ComputerComponents.Contracts;
     using HQC_Exam___Computers.Contracts;
     using System;
-    public abstract class CPU : ICpu
+    public abstract class BaseCPU : ICpu
     {
         private const string LowNumberMessage = "Number too low.";
         private const string HighNumberMessage = "Number too high.";
         private const string SquareMessage = "Square of {0} is {1}.";
         private IMotherboard motherBoard;
 
-        public CPU(byte numberOfCores, IMotherboard motherBoard)
+        public BaseCPU(byte numberOfCores, IMotherboard motherBoard)
         {
             this.motherBoard = motherBoard;
             this.NumberOfCores = numberOfCores;
