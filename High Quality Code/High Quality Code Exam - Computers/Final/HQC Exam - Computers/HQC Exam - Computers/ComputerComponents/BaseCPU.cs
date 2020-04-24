@@ -1,19 +1,18 @@
 ﻿namespace HQC_Exam___Computers
 {
     using HQC_Exam___Computers.Common;
+    using HQC_Exam___Computers.ComputerComponents;
     using HQC_Exam___Computers.ComputerComponents.Contracts;
     using HQC_Exam___Computers.Contracts;
     using System;
-    public abstract class BaseCPU : ICpu
+    public abstract class BaseCPU : MotherboardComponent, ICpu
     {
         private const string LowNumberMessage = "Number too low.";
         private const string HighNumberMessage = "Number too high.";
         private const string SquareMessage = "Square of {0} is {1}.";
-        private IMotherboard motherBoard;
 
-        public BaseCPU(byte numberOfCores, IMotherboard motherBoard)
+        public BaseCPU(byte numberOfCores)
         {
-            this.motherBoard = motherBoard;
             this.NumberOfCores = numberOfCores;
         }
 
@@ -23,24 +22,24 @@
         public void GenerateRandomNumberAndSaveToRam(int a, int b)
         {
             int randomNumber = GlobalComputerHelpers.GenerateRandomNumber(a, b);
-            this.motherBoard.SaveRamValue(randomNumber);
+            this.MotherboardMediator.SaveRamValue(randomNumber);
         }
 
         public void CalculateSquare()
         {
-            var squareNum = this.motherBoard.LoadRamValue();
+            var squareNum = this.MotherboardMediator.LoadRamValue();
             if (squareNum < 0)
             {
-                this.motherBoard.DrawOnVideoCard(LowNumberMessage);
+                this.MotherboardMediator.DrawOnVideoCard(LowNumberMessage);
             }
             else if (squareNum >= this.GetMaxNumber())
             {
-                this.motherBoard.DrawOnVideoCard(HighNumberMessage);
+                this.MotherboardMediator.DrawOnVideoCard(HighNumberMessage);
             }
             else
             {
                 var square = squareNum * squareNum;
-                this.motherBoard.DrawOnVideoCard(string.Format(SquareMessage, squareNum, square));
+                this.MotherboardMediator.DrawOnVideoCard(string.Format(SquareMessage, squareNum, square));
             }
         }
 

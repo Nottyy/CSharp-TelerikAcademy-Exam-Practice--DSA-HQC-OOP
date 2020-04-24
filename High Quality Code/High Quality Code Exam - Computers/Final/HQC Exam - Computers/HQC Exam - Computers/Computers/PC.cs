@@ -7,7 +7,7 @@ namespace HQC_Exam___Computers.Computers
     {
         private const string PCDidNotGuessNumberMessage = "You didn't guess the number {0}.";
         private const string PCGuessedNumberMessage = "You win!";
-        public PC(ICpu cpu, IVideoCard videoCard, IRam ram, IEnumerable<IHardDrive> hardDrives) : base(cpu, videoCard, ram, hardDrives)
+        public PC(ICpu cpu, IRam ram, IVideoCard videoCard, IEnumerable<IHardDrive> hardDrives) : base(cpu, ram, videoCard, hardDrives)
         {
         }
 

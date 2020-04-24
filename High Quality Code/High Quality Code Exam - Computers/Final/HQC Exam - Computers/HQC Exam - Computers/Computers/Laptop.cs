@@ -6,11 +6,12 @@ namespace HQC_Exam___Computers.Computers
     public class Laptop : BaseComputer
     {
         private const string BatteryChargedMessage = "Battery status: {0}";
-        public Laptop(ICpu cpu, IVideoCard videoCard, IRam ram, IEnumerable<IHardDrive> hardDrives, IBattery laptopBattery) 
-            : base(cpu, videoCard, ram, hardDrives)
+
+        public Laptop(ICpu cpu, IRam ram, IVideoCard videoCard, IEnumerable<IHardDrive> hardDrives, IBattery laptopBattery) : base(cpu, ram, videoCard, hardDrives)
         {
             this.LaptopBattery = laptopBattery;
         }
+
         protected IBattery LaptopBattery { get; set; }
 
         public void ChargeBattery(int percentage)
