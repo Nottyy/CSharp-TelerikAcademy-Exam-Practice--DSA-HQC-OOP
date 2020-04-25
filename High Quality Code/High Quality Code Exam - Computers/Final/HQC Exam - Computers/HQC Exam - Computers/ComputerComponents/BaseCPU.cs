@@ -18,28 +18,27 @@
 
         public byte NumberOfCores { get; private set; }
         
-
         public void GenerateRandomNumberAndSaveToRam(int a, int b)
         {
             int randomNumber = GlobalComputerHelpers.GenerateRandomNumber(a, b);
-            this.MotherboardMediator.SaveRamValue(randomNumber);
+            this.Motherboard.SaveRamValue(randomNumber);
         }
 
         public void CalculateSquare()
         {
-            var squareNum = this.MotherboardMediator.LoadRamValue();
+            var squareNum = this.Motherboard.LoadRamValue();
             if (squareNum < 0)
             {
-                this.MotherboardMediator.DrawOnVideoCard(LowNumberMessage);
+                this.Motherboard.DrawOnVideoCard(LowNumberMessage);
             }
             else if (squareNum >= this.GetMaxNumber())
             {
-                this.MotherboardMediator.DrawOnVideoCard(HighNumberMessage);
+                this.Motherboard.DrawOnVideoCard(HighNumberMessage);
             }
             else
             {
                 var square = squareNum * squareNum;
-                this.MotherboardMediator.DrawOnVideoCard(string.Format(SquareMessage, squareNum, square));
+                this.Motherboard.DrawOnVideoCard(string.Format(SquareMessage, squareNum, square));
             }
         }
 

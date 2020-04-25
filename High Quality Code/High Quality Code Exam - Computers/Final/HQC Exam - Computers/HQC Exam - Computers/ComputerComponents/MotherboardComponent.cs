@@ -5,6 +5,6 @@
 
     public abstract class MotherboardComponent : IMotherboardComponent
     {
-        public IMotherboard MotherboardMediator { get; set; }
+        public IMotherboard Motherboard { get; set; }
     }
 }

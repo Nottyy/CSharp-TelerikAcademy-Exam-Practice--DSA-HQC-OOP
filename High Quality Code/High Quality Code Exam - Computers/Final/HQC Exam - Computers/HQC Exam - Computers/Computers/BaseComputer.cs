@@ -12,8 +12,8 @@ namespace HQC_Exam___Computers.Computers
             this.CPU = cpu;
             this.Ram = ram;
             this.HardDrives = hardDrives;
-            this.Motherboard = new MotherBoard(videoCard, ram, cpu);
             this.VideoCard = videoCard;
+            this.Motherboard = new MotherBoard(videoCard, ram, cpu);
         }
 
         public IMotherboard Motherboard { get; private set; }

@@ -2,13 +2,13 @@
 {
     using HQC_Exam___Computers.ComputerComponents.Contracts;
     using System;
-    public class ColorfulVideoCard : IVideoCard
+    public class ColorfulVideoCard : MotherboardComponent, IVideoCard
     {
         private const ConsoleColor ColorfulVideoCardColor= ConsoleColor.Green;
 
         public void Draw(string msg)
         {
-            Console.BackgroundColor = ColorfulVideoCardColor;
+            Console.ForegroundColor = ColorfulVideoCardColor;
             Console.WriteLine(msg);
             Console.ResetColor();
         }

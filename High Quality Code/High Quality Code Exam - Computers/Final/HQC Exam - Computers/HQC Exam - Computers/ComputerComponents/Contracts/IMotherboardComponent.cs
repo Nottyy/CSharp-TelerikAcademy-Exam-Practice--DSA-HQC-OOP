@@ -3,6 +3,6 @@
     using HQC_Exam___Computers.Contracts;
     public interface IMotherboardComponent
     {
-        IMotherboard MotherboardComponentMediator { get; set; }
+        IMotherboard Motherboard { get; set; }
     }
 }

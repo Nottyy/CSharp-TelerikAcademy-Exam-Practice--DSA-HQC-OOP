@@ -12,8 +12,13 @@
 
         public MotherBoard(IVideoCard videoCard, IRam ram, ICpu cpu)
         {
+            videoCard.Motherboard = this;
             this.VideoCard = videoCard;
+
+            ram.Motherboard = this;
             this.Ram = ram;
+
+            cpu.Motherboard = this;
             this.Cpu = cpu;
         }
         public void DrawOnVideoCard(string data)

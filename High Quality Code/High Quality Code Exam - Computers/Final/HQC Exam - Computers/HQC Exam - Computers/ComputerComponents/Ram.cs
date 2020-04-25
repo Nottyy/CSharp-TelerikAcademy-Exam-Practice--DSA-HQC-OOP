@@ -1,7 +1,9 @@
-﻿using HQC_Exam___Computers.ComputerComponents.Contracts;
-namespace HQC_Exam___Computers
+﻿namespace HQC_Exam___Computers
 {
-    public class Ram : IRam
+    using HQC_Exam___Computers.ComputerComponents;
+    using HQC_Exam___Computers.ComputerComponents.Contracts;
+
+    public class Ram : MotherboardComponent, IRam
     {
         private int value;
         internal Ram(int amount)
