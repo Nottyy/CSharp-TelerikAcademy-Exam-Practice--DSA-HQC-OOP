@@ -1,38 +1,52 @@
-﻿using HQC_Exam___Computers.ComputerComponents;
+﻿using HQC_Exam___Computers.Common;
+using HQC_Exam___Computers.ComputerComponents;
 using HQC_Exam___Computers.Computers;
 
 namespace HQC_Exam___Computers.ComputerFactories
 {
-    public class LenovoFactory : AbstractComputerFactory
+    public class LenovoFactory : AbstractManufacturerFactory
     {
         public const string LENOVOFactoryName = "Lenovo";
+
+        private const int LenovoDefaultLaptopRam = 16;
+        private const int LenovoefaultPCRam = 4;
+        private const int LenovoefaultServerRam = 8;
+
+        private const VideoCardTypes LenovoDefaultLaptopVideoCardType = VideoCardTypes.ColorFul;
+        private const VideoCardTypes LenovoDefaultPCVideoCardType = VideoCardTypes.Monochrome;
+
+        private readonly int[] LenovoDefaultLaptopHardDriveCapacity = new int[1] { 1000 };
+        private readonly int[] LenovoDefaultPCHardDriveCapacity = new int[] { 2000 };
+        private readonly int[] LenovoDefaultServerHardDriveCapacity = new int[] { 500, 500 };
+
+        private const int LenovoDefaultLaptopCpuBytes = 64;
+        private const int LenovoDefaultPCCpuBytes = 64;
+        private const int LenovoDefaultServerCpuBytes = 128;
+
+        private const byte LenovoDefaultLaptopCpuCores = 2;
+        private const byte LenovoDefaultPCCpuCores = 2;
+        private const byte LenovoDefaultServerCpuCores = 2;
+
+        public LenovoFactory(IComputerFactory compFactory) : base(compFactory)
+        {
+        }
+
         public override Laptop CreateLaptop()
         {
-            var laptopRam = new Ram(16);
-            var laptopVideoCard = new ColorfulVideoCard();
-            var laptopHardDrive = new HardDriver(1000);
-            var laptopCPU = new CPU64(2);
-
-            return new Laptop(laptopCPU, laptopRam, laptopVideoCard, new[] { laptopHardDrive });
+            return this.ComputerFactory.CreateLaptop(LenovoDefaultLaptopRam, LenovoDefaultLaptopVideoCardType,
+                LenovoDefaultLaptopHardDriveCapacity, LenovoDefaultLaptopCpuBytes, LenovoDefaultLaptopCpuCores);
         }
 
         public override PC CreatePC()
         {
-            var PCRam = new Ram(4);
-            var PCVideoCard = new MonochromeVideoCard();
-            var PCHardDrive = new HardDriver(2000);
-            var PCCPU = new CPU64(2);
-
-            return new PC(PCCPU, PCRam, PCVideoCard, new[] { PCHardDrive });
+            return this.ComputerFactory.CreatePC(LenovoDefaultLaptopRam, LenovoDefaultLaptopVideoCardType,
+                LenovoDefaultLaptopHardDriveCapacity, LenovoDefaultLaptopCpuBytes, LenovoDefaultLaptopCpuCores);
         }
 
         public override Server CreateServer()
         {
-            var ServerRam = new Ram(8);
-            var ServerHardDrives = new[] { new HardDriver(500), new HardDriver(500) };
-            var ServerCPU = new CPU128(2);
-
-            return new Server(ServerCPU, ServerRam, ServerHardDrives);
+            return this.ComputerFactory.CreateServer(LenovoDefaultLaptopRam, LenovoDefaultLaptopHardDriveCapacity, LenovoDefaultLaptopCpuBytes, 
+                LenovoDefaultLaptopCpuCores);
         }
     }
 }

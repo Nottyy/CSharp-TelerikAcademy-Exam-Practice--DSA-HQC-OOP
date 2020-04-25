@@ -1,6 +1,7 @@
-﻿using HQC_Exam___Computers.ComputerComponents.Contracts;
-namespace HQC_Exam___Computers.ComputerComponents
+﻿namespace 
+    HQC_Exam___Computers.ComputerComponents
 {
+    using HQC_Exam___Computers.ComputerComponents.Contracts;
     using HQC_Exam___Computers.Contracts;
 
     public class MotherBoard : IMotherboard

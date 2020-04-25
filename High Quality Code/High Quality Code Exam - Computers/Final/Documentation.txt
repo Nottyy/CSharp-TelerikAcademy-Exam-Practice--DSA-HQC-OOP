@@ -1,0 +1,41 @@
+Design pattern: Simple Factory
+	* 
+
+Design pattern: Strategy
+	* 
+
+Design pattern: Template Method
+	* Used in HQC_Exam___Computers.ComputerComponents in BaseBattery class – BatteryDefaultCharge method and BaseCPU class - . GetMaxNumber
+
+Design pattern: Abstract factory
+	* Used in HQC_Exam___Computers.ComputerFactories where creating computer factories from the base abstract class - AbstractComputerFactory
+
+Design pattern: Composite
+	* Used in HQC_Exam___Computers.ComputerComponents - RaidArray has a collection of IHardDrive 
+
+Design pattern: Mediator
+	* Used in HQC_Exam___Computers.ComputerComponents in Motherboard class which connects all components
+
+Found bottlenecks:
+	* 
+	* 
+
+Found bugs:
+	* 
+	* 
+	* 
+
+Single responsibility principle
+	* 
+
+Open/closed principle
+	* 
+
+Liskov substitution principle
+	* 
+
+Interface segregation principle
+	* 
+
+Dependency inversion principle
+	* 
